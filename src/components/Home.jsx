@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Button from "./Button";
+import axios from "axios";
+import { images } from "../constants/navlinks";
+import svgImage from "../assets/react.svg";
 
 const Home = (props) => {
   return (
     <article className={props.home}>
       <header className="p-3 flex flex-row justify-between bg-backc">
-        <img src="..." alt="logo.jpg" className="logo" />
+        <img src={svgImage} alt="logo.jpg" className="logo" />
         <div className="login">
           <Button name="Login" style=" mx-3 px-3 py-2 rounded" />
           <Button name="Sign Up" style="bg-primary px-3 py-2 rounded" />
@@ -23,6 +26,15 @@ const Home = (props) => {
           name="Create Account"
           style="mx-2 px-4 py-1 bg-primary rounded font-medium"
         />
+      </section>
+
+      <section className="my-2 space-y-10">
+        {images.map((image) => (
+          <div className="card px-4 ">
+            <img src={image.src} alt="image" />
+            <h3>{image.title}</h3>
+          </div>
+        ))}
       </section>
     </article>
   );
